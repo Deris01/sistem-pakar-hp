@@ -52,60 +52,49 @@ def create_pdf(penyakit, score, solusi, gejala_user):
 def main():
     st.set_page_config(page_title="Dr. Gadget AI", page_icon="🤖", layout="wide")
     
-    # --- CSS CUSTOM: MONTSERRAT (FINAL FIX) ---
+    # --- CSS CUSTOM: MONTSERRAT (VERSI STABIL & RAPI) ---
     st.markdown("""
         <style>
         /* Import Font */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
 
-        /* 1. Paksa Font Utama ke Montserrat */
-        html, body, [class*="css"], h1, h2, h3, h4, h5, h6, p, li, span, div, button, input, textarea {
+        /* 1. Judul Halaman (HEADINGS) */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif !important;
+            font-weight: 700 !important;
+            letter-spacing: -0.5px;
+        }
+
+        /* 2. Teks Paragraf & List (BODY TEXT) */
+        /* Kita target elemen spesifik saja, JANGAN target 'div' atau 'span' secara global */
+        p, li, label, .stMarkdown {
             font-family: 'Montserrat', sans-serif !important;
         }
 
-        /* 2. PERBAIKAN IKON EXPANDER (Kuncinya di sini) */
-        /* Target spesifik elemen ikon panah di Streamlit */
-        div[data-testid="stExpander"] details summary svg {
-            font-family: 'Source Sans Pro', sans-serif !important; /* Kembalikan ke default */
-            vertical-align: middle;
-        }
-        
-        /* Mencegah teks aneh muncul di sebelah ikon */
-        div[data-testid="stExpander"] details summary span {
-             font-family: 'Source Sans Pro', sans-serif !important;
+        /* 3. Tombol (BUTTONS) */
+        .stButton > button {
+            font-family: 'Montserrat', sans-serif !important;
+            font-weight: 600 !important;
+            border-radius: 12px;
         }
 
-        /* Pastikan JUDUL Expander tetap Montserrat dan Tebal */
+        /* 4. Judul Expander (Hanya Text-nya) */
+        /* Ini akan mengubah font judul kategori, tapi TIDAK menyentuh panahnya */
         div[data-testid="stExpander"] details summary p {
             font-family: 'Montserrat', sans-serif !important;
             font-weight: 600 !important;
             font-size: 16px !important;
         }
-
-        /* Styling Judul Halaman */
-        h1, h2, h3 {
-            font-weight: 700 !important;
-            letter-spacing: -0.5px;
-        }
         
-        /* Tombol Utama */
-        .stButton>button {
-            width: 100%;
-            border-radius: 12px;
-            height: 3em;
-            font-weight: 600 !important;
-            border: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        /* 5. Kartu Hasil (Metrics) */
+        div[data-testid="metric-container"] label {
+             font-family: 'Montserrat', sans-serif !important;
         }
-        
-        .stButton>button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+        div[data-testid="metric-container"] div {
+             font-family: 'Montserrat', sans-serif !important;
         }
         </style>
     """, unsafe_allow_html=True)
-
     # --- SIDEBAR ---
     with st.sidebar:
         st.image("https://cdn-icons-png.flaticon.com/512/4712/4712009.png", width=100)
@@ -208,3 +197,4 @@ def main():
 if __name__ == '__main__':
 
     main()
+
