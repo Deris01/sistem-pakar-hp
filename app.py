@@ -74,7 +74,7 @@ def main():
         /* 3. Tombol (BUTTONS) */
         .stButton > button {
             font-family: 'Montserrat', sans-serif !important;
-            font-weight: 200 !important; 
+            font-weight: 600 !important; 
             font-size: 16px !important;
             text-transform: uppercase !important; 
             letter-spacing: 1px !important; 
@@ -202,6 +202,7 @@ def main():
 if __name__ == '__main__':
 
     main()
+
 
 
 
