@@ -52,36 +52,42 @@ def create_pdf(penyakit, score, solusi, gejala_user):
 def main():
     st.set_page_config(page_title="Dr. Gadget AI", page_icon="🤖", layout="wide")
     
-    # --- INJEKSI CSS MONTSERRAT ---
+   # --- INJEKSI CSS MONTSERRAT (VERSI PAKSA) ---
     st.markdown("""
         <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
-        
-        html, body, [class*="css"] {
-            font-family: 'Montserrat', sans-serif;
+        /* Import Font dengan prioritas tinggi */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+        /* Menimpa Variabel Akar Streamlit */
+        :root {
+            --font: 'Montserrat', sans-serif;
         }
-        
+
+        /* Paksa semua elemen HTML agar tunduk */
+        html, body, [class*="css"], [class*="st-"], h1, h2, h3, h4, h5, h6, p, div, span, button, input, textarea {
+            font-family: 'Montserrat', sans-serif !important;
+        }
+
+        /* Styling Judul agar lebih Bold Geometris */
         h1, h2, h3 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
+            font-weight: 700 !important;
+            letter-spacing: -0.5px;
         }
         
+        /* Tombol */
         .stButton>button {
             width: 100%;
             border-radius: 12px;
             height: 3em;
-            font-weight: 600;
+            font-weight: 600 !important;
             border: none;
             transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif !important;
         }
         
-        .stButton>button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
+        /* Expander */
         div[data-testid="stExpander"] details summary p {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Montserrat', sans-serif !important;
             font-weight: 600;
         }
         </style>
