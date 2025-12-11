@@ -50,7 +50,7 @@ def create_pdf(penyakit, score, solusi, gejala_user):
 
 # --- APLIKASI UTAMA ---
 def main():
-    st.set_page_config(page_title="Dr. Gadget AI", page_icon="🤖", layout="wide")
+    st.set_page_config(page_title="GadgetFix", page_icon="🤖", layout="wide")
     
     # --- CSS CUSTOM: MONTSERRAT (VERSI STABIL & RAPI) ---
     st.markdown("""
@@ -93,18 +93,19 @@ def main():
         
         /* 5. Kartu Hasil (Metrics) */
         div[data-testid="metric-container"] label {
-             font-family: 'Montserrat', sans-serif !important;
+            font-family: 'Montserrat', sans-serif !important;
         }
         div[data-testid="metric-container"] div {
-             font-family: 'Montserrat', sans-serif !important;
+            font-family: 'Montserrat', sans-serif !important;
         }
         </style>
     """, unsafe_allow_html=True)
+
     # --- SIDEBAR ---
     with st.sidebar:
         st.image("https://cdn-icons-png.flaticon.com/512/4712/4712009.png", width=100)
-        st.title("Dr. Gadget v2.0")
-        st.caption("AI Diagnostic System")
+        st.title("GadgetFix")
+        st.caption("Sistem Pendeteksi Gejela Kerusakan Gadget.")
         st.markdown("---")
         st.info("💡 **Tips:** Pilih gejala selengkap mungkin agar diagnosa akurat.")
         
@@ -116,7 +117,7 @@ def main():
     with col1:
         st.write("") 
     with col2:
-        st.title("Diagnosa Kerusakan HP")
+        st.title("Diagnosa Kerusakan Gadget")
         st.write("Silakan centang gejala yang kamu alami di bawah ini.")
 
     st.markdown("---")
@@ -200,9 +201,4 @@ def main():
                 st.warning("Gejala tidak spesifik. Coba tambahkan detail gejala lain.")
 
 if __name__ == '__main__':
-
     main()
-
-
-
-
