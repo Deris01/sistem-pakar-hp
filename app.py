@@ -52,29 +52,35 @@ def create_pdf(penyakit, score, solusi, gejala_user):
 def main():
     st.set_page_config(page_title="Dr. Gadget AI", page_icon="🤖", layout="wide")
     
-   # --- INJEKSI CSS MONTSERRAT (VERSI PAKSA) ---
+    # --- CSS CUSTOM: MONTSERRAT AMAN ---
     st.markdown("""
         <style>
-        /* Import Font dengan prioritas tinggi */
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        /* Import Font */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
 
-        /* Menimpa Variabel Akar Streamlit */
-        :root {
-            --font: 'Montserrat', sans-serif;
-        }
-
-        /* Paksa semua elemen HTML agar tunduk */
-        html, body, [class*="css"], [class*="st-"], h1, h2, h3, h4, h5, h6, p, div, span, button, input, textarea {
+        /* Terapkan font hanya ke teks umum, BUKAN ke ikon */
+        html, body, [class*="css"], h1, h2, h3, h4, h5, h6, p, li, span, div {
             font-family: 'Montserrat', sans-serif !important;
         }
-
-        /* Styling Judul agar lebih Bold Geometris */
-        h1, h2, h3 {
-            font-weight: 700 !important;
-            letter-spacing: -0.5px;
+        
+        /* Kecualikan ikon Material/Streamlit agar tidak rusak */
+        [data-testid="stExpander"] details summary span {
+            font-family: 'Source Sans Pro', sans-serif !important; /* Kembalikan font ikon ke default */
         }
         
-        /* Tombol */
+        /* Tapi paksa judul Expander tetap Montserrat */
+        [data-testid="stExpander"] details summary p {
+            font-family: 'Montserrat', sans-serif !important;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        /* Styling Judul Halaman */
+        h1, h2, h3 {
+            font-weight: 700 !important;
+        }
+        
+        /* Tombol Utama */
         .stButton>button {
             width: 100%;
             border-radius: 12px;
@@ -82,13 +88,13 @@ def main():
             font-weight: 600 !important;
             border: none;
             transition: all 0.3s ease;
-            font-family: 'Montserrat', sans-serif !important;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
-        /* Expander */
-        div[data-testid="stExpander"] details summary p {
-            font-family: 'Montserrat', sans-serif !important;
-            font-weight: 600;
+        /* Efek Hover Tombol */
+        .stButton>button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.2);
         }
         </style>
     """, unsafe_allow_html=True)
