@@ -8,7 +8,7 @@ def create_pdf(penyakit, score, solusi, gejala_user):
     class PDF(FPDF):
         def header(self):
             self.set_font('Arial', 'B', 16)
-            self.cell(0, 10, 'Laporan Diagnosa Dr. Gadget', 0, 1, 'C')
+            self.cell(0, 10, 'Laporan Diagnosa GadgetFix', 0, 1, 'C')
             self.set_font('Arial', 'I', 10)
             self.cell(0, 10, f'Tanggal Cetak: {datetime.now().strftime("%d-%m-%Y %H:%M")}', 0, 1, 'C')
             self.line(10, 30, 200, 30)
@@ -16,7 +16,7 @@ def create_pdf(penyakit, score, solusi, gejala_user):
         def footer(self):
             self.set_y(-15)
             self.set_font('Arial', 'I', 8)
-            self.cell(0, 10, 'Dicetak otomatis oleh Sistem Pakar Dr. Gadget (AI)', 0, 0, 'C')
+            self.cell(0, 10, 'Dicetak otomatis oleh Sistem Pakar GadgetFix (AI)', 0, 0, 'C')
 
     pdf = PDF()
     pdf.add_page()
@@ -187,7 +187,7 @@ def main():
                 st.download_button(
                     label="📥 Download Laporan (PDF)",
                     data=html_pdf,
-                    file_name=f"DrGadget_Report.pdf",
+                    file_name=f"GadgetFix_Report.pdf",
                     mime="application/pdf",
                     key="pdf-btn"
                 )
