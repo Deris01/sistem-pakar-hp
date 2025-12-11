@@ -52,32 +52,40 @@ def create_pdf(penyakit, score, solusi, gejala_user):
 def main():
     st.set_page_config(page_title="Dr. Gadget AI", page_icon="🤖", layout="wide")
     
-    # --- CSS CUSTOM: MONTSERRAT AMAN ---
+    # --- CSS CUSTOM: MONTSERRAT (FINAL FIX) ---
     st.markdown("""
         <style>
         /* Import Font */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
 
-        /* Terapkan font hanya ke teks umum, BUKAN ke ikon */
-        html, body, [class*="css"], h1, h2, h3, h4, h5, h6, p, li, span, div {
+        /* 1. Paksa Font Utama ke Montserrat */
+        html, body, [class*="css"], h1, h2, h3, h4, h5, h6, p, li, span, div, button, input, textarea {
             font-family: 'Montserrat', sans-serif !important;
         }
-        
-        /* Kecualikan ikon Material/Streamlit agar tidak rusak */
-        [data-testid="stExpander"] details summary span {
-            font-family: 'Source Sans Pro', sans-serif !important; /* Kembalikan font ikon ke default */
+
+        /* 2. PERBAIKAN IKON EXPANDER (Kuncinya di sini) */
+        /* Target spesifik elemen ikon panah di Streamlit */
+        div[data-testid="stExpander"] details summary svg {
+            font-family: 'Source Sans Pro', sans-serif !important; /* Kembalikan ke default */
+            vertical-align: middle;
         }
         
-        /* Tapi paksa judul Expander tetap Montserrat */
-        [data-testid="stExpander"] details summary p {
+        /* Mencegah teks aneh muncul di sebelah ikon */
+        div[data-testid="stExpander"] details summary span {
+             font-family: 'Source Sans Pro', sans-serif !important;
+        }
+
+        /* Pastikan JUDUL Expander tetap Montserrat dan Tebal */
+        div[data-testid="stExpander"] details summary p {
             font-family: 'Montserrat', sans-serif !important;
-            font-weight: 600;
-            font-size: 1.1em;
+            font-weight: 600 !important;
+            font-size: 16px !important;
         }
 
         /* Styling Judul Halaman */
         h1, h2, h3 {
             font-weight: 700 !important;
+            letter-spacing: -0.5px;
         }
         
         /* Tombol Utama */
@@ -91,7 +99,6 @@ def main():
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
-        /* Efek Hover Tombol */
         .stButton>button:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 10px rgba(0,0,0,0.2);
@@ -199,4 +206,5 @@ def main():
                 st.warning("Gejala tidak spesifik. Coba tambahkan detail gejala lain.")
 
 if __name__ == '__main__':
+
     main()
